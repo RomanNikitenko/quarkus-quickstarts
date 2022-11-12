@@ -5,14 +5,14 @@ inline:
   commands:
     - id: init-container-command
       apply:
-        component: devspaces-idea-next-injector
+        component: devspaces-idea-3-4-injector
   events:
     preStart:
       - init-container-command
   components:
-    - name: idea-runtime-udi-next
+    - name: idea-runtime-udi-3-4
       container:
-        image: 'quay.io/devspaces/udi-rhel8:next'
+        image: 'quay.io/devspaces/udi-rhel8:3.4'
         command:
           - /projector/entrypoint-volume.sh
         env:
@@ -44,7 +44,7 @@ inline:
             secure: false
             protocol: http
       attributes:
-        app.kubernetes.io/component: devspaces-idea-next-injector
+        app.kubernetes.io/component: devspaces-idea-3-4-injector
         app.kubernetes.io/part-of: che-idea.eclipse.org
     - name: projector-volume
       volume: { }
@@ -52,9 +52,9 @@ inline:
       volume: { }
     - name: projector-java-configuration
       volume: { }
-    - name: devspaces-idea-next-injector
+    - name: devspaces-idea-3-4-injector
       container:
-        image: 'quay.io/devspaces/idea-rhel8:next'
+        image: 'quay.io/devspaces/idea-rhel8:3.4'
         command: ["/projector/entrypoint-init-container.sh"]
         env:
           - name: PROJECTOR_VOLUME_MOUNT
