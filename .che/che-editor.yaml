@@ -5,12 +5,12 @@ inline:
   commands:
     - id: init-container-command
       apply:
-        component: idea-rhel8-injector
+        component: che-idea-custom-injector
   events:
     preStart:
       - init-container-command
   components:
-    - name: idea-rhel8-runtime
+    - name: idea-runtime-udi-next
       container:
         image: 'quay.io/devspaces/udi-rhel8:next'
         command:
@@ -44,7 +44,7 @@ inline:
             secure: false
             protocol: http
       attributes:
-        app.kubernetes.io/component: idea-rhel8-injector
+        app.kubernetes.io/component: che-idea-custom-injector
         app.kubernetes.io/part-of: che-idea.eclipse.org
     - name: projector-volume
       volume: { }
@@ -52,9 +52,9 @@ inline:
       volume: { }
     - name: projector-java-configuration
       volume: { }
-    - name: idea-rhel8-injector
+    - name: che-idea-custom-injector
       container:
-        image: 'quay.io/devspaces/idea-rhel8:next'
+        image: 'quay.io/rnikitenko/che-idea:test'
         command: ["/projector/entrypoint-init-container.sh"]
         env:
           - name: PROJECTOR_VOLUME_MOUNT
