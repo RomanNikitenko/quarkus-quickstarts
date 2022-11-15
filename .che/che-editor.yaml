@@ -25,8 +25,6 @@ inline:
             path: /projector
           - name: projector-configuration
             path: /home/user/.jetbrains
-          - name: projector-java-configuration
-            path: /home/user/.java
         memoryLimit: 6144Mi
         memoryRequest: 2048Mi
         cpuLimit: 2000m
