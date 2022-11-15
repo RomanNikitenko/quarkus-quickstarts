@@ -50,8 +50,6 @@ inline:
       volume: { }
     - name: projector-configuration
       volume: { }
-    - name: projector-java-configuration
-      volume: { }
     - name: che-idea-next-injector
       container:
         image: 'quay.io/che-incubator/che-idea:next'
